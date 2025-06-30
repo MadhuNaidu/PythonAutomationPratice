@@ -29,6 +29,32 @@
 27. diff break, continue and pass?
 28. diff b/w for and while with use cases?
 """
+"""
+1. What is the diff b/w search and match?
+2. What is the diff b/w sub and subn?
+3. *,.,?
+4. IPaddress  IPV4 , ipv6
+5. random special
+6. write the regex for email validation?
+"""
+"""
+1) What is a module? 
+2) types of modules?
+3) What is a package?
+4) Types of package?
+5) __init__.py?
+6) How to install packages by using pip?
+7) Selenium:
+8) Pytest:
+9) Requests
+10) json
+"""
+"""
+1. how to create / remove file, dir etc?
+2. How to execute cmds using os module?
+3. How to traverse over the nested folders / dir?
+
+"""
 
 
 def find_nearby_duplicates(lst):

@@ -54,9 +54,10 @@ functins-1
 special-1
 modules-1
 packages-2-3
-oops-2-3
 file handles - 1
 exceptions -1
+
+oops-2-3
 selenium: 6+
 pytest: 3+
 api : 3+
