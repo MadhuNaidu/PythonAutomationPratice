@@ -10,7 +10,7 @@
 8. diff b/w insert, append and extend?
 9. diff b/w pop and remove, clear?
 10. diff shallow and deep copy with example?
-11. how to sort a list with ascending and descnding order?
+11. how to sort a list with ascending and descending order?
 12. What is a dict and where to use?
 13. how many ways we can get the values from dict?
 14. how many ways we can update the dict?
@@ -55,6 +55,48 @@
 3. How to traverse over the nested folders / dir?
 
 """
+"""
+1) What are the oops concepts in python?
+2) What is class and object?
+3) What is constructor / init fun?
+4) What is self?
+5) What are the components we can write in class?
+6) What is polymorhism with examples?
+7) method overloading / overrriding?
+8) Encasulation with examples?
+9) access modifiers with examples? public, private, protected?
+10) Inheritance with examples?
+11) MRO?
+12) staticmethod vs classmethod ?
+13) Scope of the variables?
+14) Abstraction, how we can acheive abstraction with examples?
+
+"""
+"""
+1. What is context manager?
+2. How many ways we can perform file operations?
+3. diff modes?
+4. read, readline and readlines?
+5. write and writelines?
+6. tell and seek?
+7. wherever we have "python" word in file print all those lines?
+8. count each word in a file?
+9. how to handle the exceptions?
+
+
+"""
+
+"""
+Selenium Interviews:
+1. What a webdriver?
+2. What selenium components?
+3. Close and quit?
+4. find_element and find_elements?
+5. What are the locators?
+6. diff relative and abosulte xpath?
+7. css_selector and xpath?
+"""
+
 
 
 def find_nearby_duplicates(lst):
