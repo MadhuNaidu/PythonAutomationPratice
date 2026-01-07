@@ -96,8 +96,24 @@ Selenium Interviews:
 6. diff relative and abosulte xpath?
 7. css_selector and xpath?
 """
+"""
+------------------------------
+Interview Questions - Manual Testing
+------------------------------
 
-
+1. What is a SDLC?
+2. What is a STLC?
+3. What is a bug life cycle?
+4. What are the types of testing?
+5. What is diff block box, white and gray box testing?
+6. What is diff functional and non functional?
+7. What is regression testing?
+8. What is diff b/w smoke, sanity, integration, system, adhoc and regression?
+9. What are the testing techquiniq?
+10. What is diff b/w severity and priority?
+11. What is a agile process? Scrum / Agile ceremonies?
+12. Test plan, Test scenaries?
+"""
 
 def find_nearby_duplicates(lst):
     from collections import defaultdict
@@ -128,3 +144,4 @@ print(find_nearby_duplicates(input1))  # Expected output: [5]
 
 input2 = [1, 2, 3, 1, 2, 5, 4, 3]
 print(find_nearby_duplicates(input2))  # Expected output: [1,2]
+
