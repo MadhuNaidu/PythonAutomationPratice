@@ -39,7 +39,7 @@ b = 10
 
 print(id(a))
 print(id(b))
-print(id(a))
+
 a = 13
 print("after value update:", id(a))
 
