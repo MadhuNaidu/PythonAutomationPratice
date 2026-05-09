@@ -3,4 +3,5 @@ selenium
 requests
 pandas
 pytest
+paramiko
 pytest-html
