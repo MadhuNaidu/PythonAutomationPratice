@@ -1,6 +1,7 @@
+pytest-xdist
 selenium
 requests
 pandas
 pytest
-pytest-xdist
 paramiko
+pytest-html
