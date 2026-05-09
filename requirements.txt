@@ -2,3 +2,5 @@ selenium
 requests
 pandas
 pytest
+pytest-xdist
+paramiko
