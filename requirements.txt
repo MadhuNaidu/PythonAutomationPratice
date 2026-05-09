@@ -1,4 +1,6 @@
+pytest-xdist
 selenium
 requests
 pandas
 pytest
+pytest-html
