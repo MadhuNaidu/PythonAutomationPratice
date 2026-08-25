@@ -11,8 +11,8 @@ class HomePage(BasePage):
     def launch_url(self, url):
         self.navigate(url)
 
-    def locator_is_visible(self, locator):
-        return self.is_visible(locator)
+    def locator_is_visible(self, locator, timeout=30000):
+        return self.is_visible(locator, timeout)
 
     def click_signup(self):
         self.click(self.signup_login_link)

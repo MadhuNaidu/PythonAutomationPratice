@@ -32,6 +32,14 @@ class TestSignupLogin:
         assert home.locator_is_visible(home.home_icon), "Home page is not loading"
         home.click_signup()
         signup_login.do_signup("msn python", "msnpython@gmail.com")
+        assert home.page.get_by_text(signup_login.enter_acct_info).is_visible(), "Signup is not loaded"
+        signup_login.fill_signup_account_info_form('Mr', 'msn2121')
 
-
+"""
+windows / tabs
+frames
+alerts
+file upload
+shadow dom
+"""
 
