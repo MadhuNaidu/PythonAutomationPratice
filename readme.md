@@ -72,5 +72,14 @@ Project:
     conftest.py
         fixtures: setup and teardown, pre conditions we can use in fixtures
         scopes: function, class, module, session and package
+        by default is function scope
+        function: it will execute once per the each function / test defination
+        class: it will execute only once per the class
+        module: it will execute only once per the file / module
+        session: it will execute only once per the session
+        package: it will execute only once per the package.
         hooks: 
+    parametrization: it is a pytest feature to run a single testcase with multiple test data
+    marker: we can use to seggrigate / group the testcases based on the features
+
 """ 
