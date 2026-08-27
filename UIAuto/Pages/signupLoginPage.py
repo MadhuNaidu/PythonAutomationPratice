@@ -10,6 +10,8 @@ class SignupLogin(BasePage):
     name = '[data-qa="signup-name"]'
     email = '[data-qa="signup-email"]'
     submit_btn = '[data-qa="signup-button"]'
+
+    # account information
     enter_acct_info = 'Enter Account Information'
     mr_btn = '[id="id_gender1"]'
     mrs_btn = '[id="id_gender2"]'
@@ -19,6 +21,18 @@ class SignupLogin(BasePage):
     years_dp = '[id="years"]'
     news_letter_check = '[id="newsletter"]'
     receive_options_check = '[id="optin"]'
+
+    # address information
+    first_name = '[id="first_name"]'
+    last_name = '[id="last_name"]'
+    company = '[id="company"]'
+    address = '[id="address1"]'
+    address2 = '[id="address2"]'
+    state = '[id="state"]'
+    city = '[id="city"]'
+    zipcode = '[id="zipcode"]'
+    mobile = '[id="mobile_number"]'
+    create_account = '[data-qa="create-account"]'
 
     def enter_username(self, username):
         self.fill(self.name, username)
@@ -50,6 +64,26 @@ class SignupLogin(BasePage):
         self.check_checkbox(self.news_letter_check)
         self.check_checkbox(self.receive_options_check)
         print("******** fill signup form is ended *******")
-    def fill_signup_address_info(self, first_name, last_name, company, address1, address2, country,
-                          state, zipcode, mobile):
-        pass
+
+    def fill_signup_address_info(self, first_name, last_name, company, address1, address2, city,
+                                 state, zipcode, mobile):
+        print("****** fill signup address info started ******")
+        self.fill(self.first_name, first_name)
+        self.fill(self.last_name, last_name)
+        self.fill(self.company, company)
+        self.fill(self.address, address1)
+        self.fill(self.address2, address2)
+        self.fill(self.state, state)
+        self.fill(self.city, city)
+        self.fill(self.zipcode, zipcode)
+        self.fill(self.mobile, mobile)
+        print("**** fill signuo address info ended ********")
+
+    def click_create_button_verify_account_creation(self):
+        """
+        This will click the create account button and will return account created status
+        :return: boolean
+        """
+        print("**** create account verification started *****")
+        self.click(self.create_account)
+        return self.page.get_by_text('ACCOUNT CREATED').is_visible()
