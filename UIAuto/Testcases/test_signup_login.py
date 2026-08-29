@@ -20,12 +20,20 @@ pytest testpath -s -v
 import random
 import string
 import json
+import time
+
 import pytest
 from UIAuto.Pages.signupLoginPage import SignupLogin
 from UIAuto.Pages.homepPage import HomePage
 
 
 class TestSignupLogin:
+
+    def handle_dialog(dialog):
+        message = dialog.message
+        print(f"Message: {message}")
+        dialog.accept()
+
     with open(r"C:\Users\madhusudhana_naidu\PycharmProjects\AutoExPw\UIAuto\Testdata\user_creation_data.json") as file:
         test_data = json.load(file)
 
@@ -40,37 +48,103 @@ class TestSignupLogin:
         page = page
         signup_login = SignupLogin(page)
         home = HomePage(page)
-        # home.navigate("https://automationexercise.com/")
+        home.navigate("https://automationexercise.com/")
         assert home.locator_is_visible(home.home_icon), "Home page is not loading"
         home.click_signup()
         signup_login.do_signup(name, email)
         assert home.page.get_by_text(signup_login.enter_acct_info).is_visible(), "Signup is not loaded"
-        # signup_login.fill_signup_account_info_form('Mr', 'msn2121')
-        # signup_login.fill_signup_address_info("msn", "python", "msnpython", "Bangalore",
-        #                                       "Marathalli", "Bangalore", "KA", "560037",
-        #                                       "7799884799")
-        # assert signup_login.click_create_button_verify_account_creation(), "account creation is failed"
+        signup_login.fill_signup_account_info_form('Mr', 'msn2121')
+        signup_login.fill_signup_address_info("msn", "python", "msnpython", "Bangalore",
+                                              "Marathalli", "Bangalore", "KA", "560037",
+                                              "7799884799")
+        assert signup_login.click_create_button_verify_account_creation(), "account creation is failed"
 
-    @pytest.mark.user_reg
     @pytest.mark.smoke
-    def test_two(self):
-        pass
+    @pytest.mark.alert
+    def test_alerts(self, page):
+        """
+        Handling the alerts with dialog
+        """
+        # try:
+        #     page.locator('[href="#OKTab"]').click()
+        #     page.wait_for_timeout(2000)
+        #     with page.expect_event("dialog") as d:
+        #         page.locator('[onclick="alertbox()"]').click()
+        #     page.wait_for_timeout(2000)
+        #     dialog = d.value
+        #     print(d.message)
+        #     print(d.type)
+        #     dialog.accept()
+        # except Exception as e:
+        #     print("Got the execpetion", e)
+        # ok and cancel
+        try:
+            page.locator('[href="#CancelTab"]').click()
+            page.wait_for_timeout(2000)
+            with page.expect_event("dialog") as d:
+                page.locator('[onclick="confirmbox()"]').click()
 
-    def test_three(self):
-        pass
+            page.wait_for_timeout(2000)
+            dialog = d.value
+            print(dialog.type)
+            print(dialog.message)
+            dialog.accept()
+        except Exception as e:
+            print(f"exception: {e}")
+        page.locator('[href="#Textbox"]').click()
+        page.wait_for_timeout(2000)
+        with page.expect_event('dialog') as d:
+            page.locator('[onclick="promptbox()"]').click()
+        page.wait_for_timeout(2000)
+        dialog = d.value
+        dialog.accept("hello")
+        """
+        page.locator('[href="#CancelTab"]').click()
+        page.wait_for_timeout(2000)
+        page.on("dialog", handle_dialog)
+        # once, on
+        page.wait_for_selector('//div[@id="CancelTab"]/button').click()
+        page.wait_for_timeout(2000)
+        """
 
+    @pytest.mark.default_aleart
+    def test_alerts_default(self, page):
 
-class TestCart:
+        page.locator('[href="#CancelTab"]').click()
+        page.wait_for_timeout(2000)
+        page.locator('[onclick="confirmbox()"]').click()
+        page.wait_for_timeout(2000)
+        time.sleep(10)
 
-    def test_cart(self):
-        pass
+    @pytest.mark.windows
+    def test_windows_pages(self, page):
+        page = page
+        page.locator('[href="#Tabbed"]').click()
+        page.locator('[href="http://www.selenium.dev"]').click()
+        print(page.title())
+        page.context.pages[1].bring_to_front()
 
+    @pytest.mark.frame
+    def test_iframes(self, page):
+        page = page
+        page.locator('[href="#Single"]').click()
+        frame = page.frame_locator('[id="singleframe"]')
+        frame.get_by_text('iFrame Demo')
+        frame.locator('[type="text"]').fill("hello hai")
+
+        # nested frames
+        frame1 = page.frame_locator('[src="MultipleFrames.html"]')
+        print(frame1.get_by_text('Nested iFrames').text_content())
+        frame2 = frame1.frame_locator('[src="SingleFrame.html"]')
+        frame2.locator('[type="text"]').fill("msn python")
 
 """
+alerts / popup / dialog
 windows / tabs
 frames
-alerts
-file upload
+file upload / download
 shadow dom
+storage state
+
 """
 
