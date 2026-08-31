@@ -34,6 +34,11 @@ class TestSignupLogin:
         print(f"Message: {message}")
         dialog.accept()
 
+    def handle_filedownload(download):
+        file_path = './test.zip'
+        # download.save_as(file_path)
+        download.save_as('./test.zip')
+
     with open(r"C:\Users\madhusudhana_naidu\PycharmProjects\AutoExPw\UIAuto\Testdata\user_creation_data.json") as file:
         test_data = json.load(file)
 
@@ -138,12 +143,44 @@ class TestSignupLogin:
         frame2 = frame1.frame_locator('[src="SingleFrame.html"]')
         frame2.locator('[type="text"]').fill("msn python")
 
+    @pytest.mark.fileupload
+    def test_file_upload(self, page):
+        page.goto('https://demo.automationtesting.in/FileUpload.html')
+
+        # single file upload
+        page.query_selector('[id="input-4"]').set_input_files(r'C:\Users\madhusudhana_naidu\PycharmProjects\PWAuto\uft_new.png')
+        # upload multiple files
+        page.query_selector('[id="input-4"]').set_input_files(
+            [r'C:\Users\madhusudhana_naidu\PycharmProjects\PWAuto\uft_new.png',
+             r"C:\Users\madhusudhana_naidu\Desktop\Profile.png"])
+        page.wait_for_timeout(2000)
+
+    @pytest.mark.filedownload
+    def test_file_download(self, page):
+        page.goto('https://demo.automationtesting.in/FileDownload.html')
+        page.wait_for_selector('[id="textbox"]').fill('hello this is file download example')
+        page.wait_for_selector('[id="createTxt"]').click()
+        # page.on('download', self.handle_filedownload)
+        # page.wait_for_selector('[id="link-to-download"]').click()
+        with page.expect_download() as d:
+            page.wait_for_selector('[id="link-to-download"]').click()
+        download_info = d.value
+        download_info.save_as("test_one.zip")
+        # page.query_selector('[id="input-4"]').set_input_files(
+        #     r'C:\Users\madhusudhana_naidu\PycharmProjects\PWAuto\uft_new.png')
+        page.wait_for_timeout(2000)
+
+
 """
 alerts / popup / dialog
 windows / tabs
 frames
 file upload / download
-shadow dom
+
+shadow dom: 
+
+
+file upload / download
 storage state
 action chains
 screenshots / videos
