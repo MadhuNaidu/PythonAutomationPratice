@@ -145,6 +145,8 @@ frames
 file upload / download
 shadow dom
 storage state
-
+action chains
+screenshots / videos
+Authentication & Storage State
 """
 
